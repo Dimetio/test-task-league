@@ -1,8 +1,15 @@
 import styles from "./table.module.css";
+import { Link } from "react-router-dom";
 
-export default function Table() {
+export default function Table({
+  title,
+  items,
+  handleTopQuestions,
+  handleTopTagQuestions,
+}) {
   return (
-    <div className={styles.wrapper}>
+    <>
+      <h2>{title}</h2>
       <table className={styles.table} cellPadding={0} cellSpacing={0}>
         <thead>
           <tr>
@@ -13,35 +20,35 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Автор</td>
-            <td>Тема</td>
-            <td>Количество ответов</td>
-            <td>теги</td>
-          </tr>
+          {items.map(({ question_id, owner, title, answer_count, tags }) => (
+            <tr key={question_id}>
+              <td
+                className={styles.author}
+                onClick={() => handleTopQuestions(owner.user_id)}
+              >
+                {owner.display_name}
+              </td>
+              <td>
+                <Link to={"/info"}>{title}</Link>
+              </td>
+              <td>
+                <Link to={"/info"}>{answer_count}</Link>
+              </td>
+              <td>
+                {tags.map((tag, index) => (
+                  <span
+                    className={styles.tag}
+                    key={index}
+                    onClick={() => handleTopTagQuestions(tag)}
+                  >
+                    {tag},{" "}
+                  </span>
+                ))}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-
-      <div className={styles.panel}>
-        <table className={styles.table} cellPadding={0} cellSpacing={0}>
-          <thead>
-            <tr>
-              <th>Вопрос</th>
-              <th>Тема</th>
-              <th>Количество ответов</th>
-              <th>тег</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Вопрос</td>
-              <td>Тема</td>
-              <td>Количество ответов</td>
-              <td>тег</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </>
   );
 }

@@ -1,9 +1,5 @@
-.wrapper {
-  display: flex;
-}
-
 .table {
-  width: 50%;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: left;
@@ -21,4 +17,13 @@ tbody tr:hover {
 th,
 td {
   padding: 10px;
+}
+
+td:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.tag:hover {
+  text-decoration: underline;
 }

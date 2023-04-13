@@ -23,3 +23,13 @@ const request = (url, options) => {
 export const getSearch = (value) => {
   return request(`${BASE_URL}/search?intitle=${value}&${queries}`);
 };
+
+export const getTopQuestions = (id) => {
+  return request(
+    `${BASE_URL}/users/${id}/questions?order=desc&sort=votes&site=stackoverflow`
+  );
+};
+
+export const getTopTagQuestions = (tag) => {
+  return request(`${BASE_URL}/tags/${tag}/faq?site=stackoverflow`);
+};

@@ -10,6 +10,7 @@ import Input from "./components/input/input";
 import { Answer, Info } from "./pages/index";
 
 function App() {
+
   return (
     <div className="App">
       <section className="section">

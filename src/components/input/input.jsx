@@ -65,7 +65,7 @@ export default function Input() {
       <form onSubmit={submitted}>
         <Field name="search" placeholder="Введите текст" />
         <button className={styles.button} type="submit">
-          Submit!
+          Искать
         </button>
       </form>
     </>

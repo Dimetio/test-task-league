@@ -13,7 +13,7 @@ export default function TableDetails() {
             <th>Автор</th>
             <th>Тема</th>
             <th>Количество ответов</th>
-            <th>теги</th>
+            <th>Теги</th>
           </tr>
         </thead>
         <tbody>

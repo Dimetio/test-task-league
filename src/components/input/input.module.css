@@ -5,9 +5,19 @@
   width: 400px;
 }
 
+.input:focus {
+  border: 2px solid teal;
+  outline: none;
+}
+
 .button {
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
   width: 200px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #ddd;
 }

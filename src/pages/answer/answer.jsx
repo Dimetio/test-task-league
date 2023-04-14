@@ -19,6 +19,7 @@ export default function Answers() {
 
   useEffect(() => {
     handleGetAnswers(id);
+    console.log(store);
   }, []);
 
   return store && Object.keys(store).length > 0 ? (

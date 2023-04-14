@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Тестовое задание на должность Frontend-разработчик к компанию [Лига Цифровой Экономики](https://www.digitalleague.ru/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Демо: [https://dimetio.github.io/test-task-league/](https://dimetio.github.io/test-task-league/)
 
-## Available Scripts
+### Технологии:
+React, React-router v6, Effector
 
-In the project directory, you can run:
+---
 
+### Описание:
+### Экраны
+* Экран поиска
+ * Состоит из поля ввода и кнопки "искать". 
+ * После ввода текста и нажатия кнопки поиска, происходит загрузка результатов поиска и переход на экран результата поиска.
+* Экран результата поиска
+ * Состоит из таблицы с результатами поиска и панели "быстрого отображения".
+   * В таблице должны отображаться: Автор вопроса, тема, количество ответов, теги.
+     * При клике на:
+       * автора вопроса — в панели "быстрого отображения" появляется таблица, аналогичная основной и содержащая наиболее популярные вопросы автора
+       * тему и количество ответов — происходит переход на экран информации о вопросе.   
+       * один из тегов — в панели "быстрого отображения" появляется таблица, аналогичная основной и содержащая наиболее популярные вопросы по этому тегу
+   * Панель "быстрого отображения" по умолчанию скрыта и появляется когда нажали на автора вопроса, или на тег.
+     * При клике на тему и количество ответов происходит переход на экран информации о вопросе
+* Экран информации о вопросе
+ *  должен отображать список ответов на выбранный вопрос
+ 
+### Технические требования:
+1. Для получения данных использовать вызовы к api прямо из браузера http://api.stackexchange.com/docs
+2. Переходы между экранами должны оставаться в истории браузера и должны работать браузерные переходы "вперед" и "назад"
+3. Поддержка firefox, chrome, safari, edge.
+4. Стэк технологий: create-react-app, react, effector, react-router v6. По желанию можно использовать Lodash, eslint (airbnb-config). Использование других библиотек запрещено. Использовать последние версии представленных библиотек. 
+5. Активно использовать стандарт ES6.
+6. Нельзя использовать CSS Фреймворки такие как Bootstrap, Foundation, Bulma, Ulkit, Semantic UI, Susy, Materialize, Pure и другие.
+7. Анимации переходов между состояниями (по желанию).
+8. Возможность сортировки в таблицах.
+9. Активно использовать Flexbox или Grid.
+10. Typescript (желательно, но не обязательно)
+
+---
+### Как запустить локально:
+### `git clone git@github.com:Dimetio/test-task-league.git`
+### `npm i`
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

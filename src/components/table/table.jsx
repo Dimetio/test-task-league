@@ -2,7 +2,7 @@ import styles from "./table.module.css";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "../modal/modal";
-import UserQuestions from "../user-questions/user-questions";
+import TableDetails from "../table-details/table-details";
 import { getTopQuestions, getTopTagQuestions } from "../../utils/api";
 
 export default function Table({ title, items }) {
@@ -19,17 +19,17 @@ export default function Table({ title, items }) {
   }
 
   const hadnleClickUser = (id) => {
-    getTopQuestions(id).then((data) => {
-      setPanelData(data.items);
-      handleOpenModal();
-    });
+    // getTopQuestions(id).then((data) => {
+    //   setPanelData(data.items);
+    //   handleOpenModal();
+    // });
   };
 
   const hadnleClickTag = (tag) => {
-    getTopTagQuestions(tag).then((data) => {
-      setPanelData(data.items);
-      handleOpenModal();
-    });
+    // getTopTagQuestions(tag).then((data) => {
+    //   setPanelData(data.items);
+    //   handleOpenModal();
+    // });
   };
   return (
     <>
@@ -48,7 +48,7 @@ export default function Table({ title, items }) {
             <tr key={question_id}>
               <td className={styles.author}>
                 <Link
-                  to={`${question_id}`}
+                  to={`/${question_id}`}
                   state={{ background: location }}
                   onClick={() => hadnleClickUser(owner.user_id)}
                 >
@@ -81,7 +81,7 @@ export default function Table({ title, items }) {
 
       {isVisible && (
         <Modal closeModal={handleCloseModal} isOpened={isVisible}>
-          <UserQuestions
+          <TableDetails
             items={panelData}
             title="Наиболее популярные вопросы автора"
           />

@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Input from "./components/input/input";
 import { Questions, Answers } from "./pages/index";
 import Modal from "./components/modal/modal";
-import UserQuestions from "./components/user-questions/user-questions";
+import TableDetails from "./components/table-details/table-details";
 
 function App() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function App() {
       <section className="section">
         <Routes location={background || location}>
           <Route path="/questions" element={<Questions />} />
-          <Route path="/questions/:id" element={<UserQuestions />} />
+          <Route path="/questions/:id" element={<TableDetails />} />
           <Route path={"/answer/:id"} element={<Answers />} />
           <Route path="/" element={<Input />} />
         </Routes>
@@ -35,7 +35,7 @@ function App() {
                 closeModal={onDismiss}
                 isOpened={true}
               >
-                <UserQuestions />
+                <TableDetails />
               </Modal>
             }
           />
@@ -47,7 +47,7 @@ function App() {
                 closeModal={onDismiss}
                 isOpened={true}
               >
-                <UserQuestions />
+                <TableDetails />
               </Modal>
             }
           />

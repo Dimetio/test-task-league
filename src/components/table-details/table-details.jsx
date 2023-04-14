@@ -1,6 +1,6 @@
-import styles from "./user-questions.module.css";
+import styles from "./table-details.module.css";
 
-export default function UserQuestions({ items }) {
+export default function TableDetails({ items }) {
   return items && Object.keys(items).length > 0 ? (
     <>
       <table className={styles.table} cellPadding={0} cellSpacing={0}>

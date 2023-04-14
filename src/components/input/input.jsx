@@ -45,7 +45,7 @@ const mock = [
   },
 ];
 
-//console.log(mock);
+console.log(mock);
 
 export const $search = createStore(mock).on(
   fetchSearchFx.doneData,

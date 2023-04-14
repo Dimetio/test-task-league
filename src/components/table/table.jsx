@@ -1,35 +1,25 @@
 import styles from "./table.module.css";
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Modal from "../modal/modal";
-import TableDetails from "../table-details/table-details";
 import { getTopQuestions, getTopTagQuestions } from "../../utils/api";
+import { apiStore } from "../../store";
 
 export default function Table({ title, items }) {
   const location = useLocation();
-  const [isVisible, setIsVisible] = useState(false);
-  const [panelData, setPanelData] = useState(null);
 
-  function handleOpenModal() {
-    setIsVisible(true);
+  function handleClickUserQuestion(id) {
+    getTopQuestions(id)
+      .then((data) => {
+        apiStore.getUserQuestions(data.items);
+      })
+      .catch((err) => console.log(err));
   }
-
-  function handleCloseModal() {
-    setIsVisible(false);
-  }
-
-  const hadnleClickUser = (id) => {
-    // getTopQuestions(id).then((data) => {
-    //   setPanelData(data.items);
-    //   handleOpenModal();
-    // });
-  };
 
   const hadnleClickTag = (tag) => {
-    // getTopTagQuestions(tag).then((data) => {
-    //   setPanelData(data.items);
-    //   handleOpenModal();
-    // });
+    getTopTagQuestions(tag)
+      .then((data) => {
+        apiStore.getQuestionsForTag(data.items);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -48,9 +38,9 @@ export default function Table({ title, items }) {
             <tr key={question_id}>
               <td className={styles.author}>
                 <Link
-                  to={`/${question_id}`}
+                  onClick={() => handleClickUserQuestion(owner.user_id)}
+                  to={`${owner.user_id}`}
                   state={{ background: location }}
-                  onClick={() => hadnleClickUser(owner.user_id)}
                 >
                   {owner.display_name}
                 </Link>
@@ -78,15 +68,6 @@ export default function Table({ title, items }) {
           ))}
         </tbody>
       </table>
-
-      {isVisible && (
-        <Modal closeModal={handleCloseModal} isOpened={isVisible}>
-          <TableDetails
-            items={panelData}
-            title="Наиболее популярные вопросы автора"
-          />
-        </Modal>
-      )}
     </>
   );
 }

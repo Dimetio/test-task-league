@@ -25,7 +25,7 @@ function App() {
         </Routes>
       </section>
 
-      {/* {background && (
+      {background && (
         <Routes>
           <Route
             path="/questions/:id"
@@ -52,7 +52,7 @@ function App() {
             }
           />
         </Routes>
-      )} */}
+      )}
     </div>
   );
 }

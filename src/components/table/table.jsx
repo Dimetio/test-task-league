@@ -7,6 +7,7 @@ export default function Table({ title, items }) {
   const location = useLocation();
 
   function handleClickUserQuestion(id) {
+    apiStore.resetStore()
     getTopQuestions(id)
       .then((data) => {
         apiStore.getUserQuestions(data.items);
@@ -15,6 +16,7 @@ export default function Table({ title, items }) {
   }
 
   const hadnleClickTag = (tag) => {
+    apiStore.resetStore()
     getTopTagQuestions(tag)
       .then((data) => {
         apiStore.getQuestionsForTag(data.items);

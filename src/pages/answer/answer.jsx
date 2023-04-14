@@ -11,6 +11,7 @@ export default function Answers() {
   const { id } = useParams();
 
   const handleGetAnswers = (id) => {
+    apiStore.resetStore();
     getAnswers(id)
       .then((data) => apiStore.getAnswers(data.items))
       .catch((err) => console.log(err));

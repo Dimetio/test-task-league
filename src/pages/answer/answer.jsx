@@ -1,62 +1,36 @@
 import styles from "./answer.module.css";
-import { useStore } from "effector-react";
-import { $search } from "../../components/input/input";
-import { getTopQuestions, getTopTagQuestions } from "../../utils/api";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
-import Table from "../../components/table/table";
+import { getAnswers } from "../../utils/api";
+import { useEffect } from "react";
 
-export default function Answer() {
-  const [panelData, setPanelData] = useState(null);
-  const [isShowPanel, setIsShowPanel] = useState(false);
+export default function Answers() {
+  const { id } = useParams();
+  const [data, setData] = useState(null);
 
-  const handleTopQuestions = (id) => {
-    getTopQuestions(id).then((data) => {
-      setPanelData(data.items);
-      setIsShowPanel(true);
+  const handleGetAnswers = (id) => {
+    getAnswers(id).then((data) => {
+      console.log(data.items);
+      setData(data.items);
     });
   };
 
-  const handleTopTagQuestions = (tag) => {
-    getTopTagQuestions(tag).then((data) => {
-      setPanelData(data.items);
-      setIsShowPanel(true);
-    });
-  };
+  useEffect(() => {
+    handleGetAnswers(id);
+  }, []);
 
-  const searchStore = useStore($search);
-  return (
-    <div className={styles.wrapper}>
-      {searchStore && (
-        <>
-          <div className={styles.block}>
-            <Table
-              items={searchStore}
-              handleTopQuestions={handleTopQuestions}
-              handleTopTagQuestions={handleTopTagQuestions}
-            />
-          </div>
-
-          {isShowPanel &&
-            (panelData && Object.keys(panelData).length > 0 ? (
-              <div className={styles.block}>
-                <div
-                  className={`${styles.panel} ${
-                    isShowPanel && styles.panel__show
-                  }`}
-                >
-                  <Table
-                    title="Наиболее популярные вопросы автора"
-                    items={panelData}
-                    handleTopQuestions={handleTopQuestions}
-                    handleTopTagQuestions={handleTopTagQuestions}
-                  />
-                </div>
-              </div>
-            ) : (
-              <div>не найдено</div>
-            ))}
-        </>
-      )}
-    </div>
+  return data && Object.keys(data).length > 0 ? (
+    <>
+      <h2>Список ответов на вопрос</h2>
+      <ul>
+        {data.map(({ owner, answer_id }) => (
+          <li key={answer_id}>
+            {owner.display_name}: {answer_id}
+          </li>
+        ))}
+      </ul>
+    </>
+  ) : (
+    <div>Ответов не найдено</div>
   );
 }

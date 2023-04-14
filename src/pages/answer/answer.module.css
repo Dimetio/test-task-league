@@ -1,17 +1,14 @@
-.wrapper {
+ul {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+}
+li {
+  border-bottom: 1px solid #000;
+  padding: 5px 10px;
 }
 
-.block {
-  width: 100%;
-  max-width: 50%;
-}
-
-.panel {
-  display: none;
-}
-
-.panel__show {
-  display: block;
+li:hover {
+  background-color: #eee;
 }

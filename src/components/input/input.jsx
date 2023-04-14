@@ -8,7 +8,7 @@ const submitted = createEvent();
 const setField = createEvent();
 
 const sendFormFx = createEffect((params) => {
-  fetchSearchFx(params);
+  //fetchSearchFx(params);
 });
 
 const fetchSearchFx = createEffect((params) =>
@@ -45,7 +45,7 @@ const mock = [
   },
 ];
 
-console.log(mock);
+//console.log(mock);
 
 export const $search = createStore(mock).on(
   fetchSearchFx.doneData,
@@ -88,7 +88,7 @@ export default function Input() {
   return (
     <>
       {search && (
-        <Navigate to="/answer" state={{ from: location }} replace={true} />
+        <Navigate to="/questions" state={{ from: location }} replace={true} />
       )}
 
       <form onSubmit={submitted}>

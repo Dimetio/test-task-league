@@ -31,5 +31,13 @@ export const getTopQuestions = (id) => {
 };
 
 export const getTopTagQuestions = (tag) => {
+  console.log(`${BASE_URL}/tags/${tag}/faq?site=stackoverflow`)
   return request(`${BASE_URL}/tags/${tag}/faq?site=stackoverflow`);
+};
+
+export const getAnswers = (id) => {
+  console.log(`${BASE_URL}/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow`)
+  return request(
+    `${BASE_URL}/questions/${id}/answers?order=desc&sort=votes&site=stackoverflow`
+  );
 };

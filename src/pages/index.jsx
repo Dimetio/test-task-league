@@ -1,4 +1,4 @@
-import Answer from "./answer/answer";
-import Info from "./info/info";
+import Questions from "./questions/questions";
+import Answers from "./answer/answer";
 
-export { Answer, Info };
+export { Questions, Answers };

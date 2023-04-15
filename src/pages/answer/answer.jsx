@@ -19,15 +19,15 @@ export default function Answers() {
 
   useEffect(() => {
     handleGetAnswers(id);
-    console.log(store);
+    //console.log(store);
   }, []);
 
   return store && Object.keys(store).length > 0 ? (
     <>
       <h2>Список ответов на вопрос</h2>
       <ul>
-        {store.map(({ owner, answer_id }) => (
-          <li key={answer_id}>
+        {store.map(({ owner, answer_id }, index) => (
+          <li key={index}>
             {owner.display_name}: {answer_id}
           </li>
         ))}

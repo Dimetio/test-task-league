@@ -13,7 +13,7 @@ const sendFormFx = createEffect((params) => {
 
 const fetchSearchFx = createEffect((params) =>
   getSearch(params).then((data) => {
-    console.log(data.items);
+    //console.log(data.items);
     return data.items;
   })
 );

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Input from "./components/input/input";
-import { Questions, Answers } from "./pages/index";
+import { Questions, Answers, NotFound404 } from "./pages/index";
 import Modal from "./components/modal/modal";
 import TableDetails from "./components/table-details/table-details";
 
@@ -22,6 +22,7 @@ function App() {
           <Route path="/questions/:id" element={<TableDetails />} />
           <Route path={"/answer/:id"} element={<Answers />} />
           <Route path="/" element={<Input />} />
+          <Route path="*" element={<NotFound404 />} />
         </Routes>
       </section>
 

@@ -1,9 +1,10 @@
 import "./App.css";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import Input from "./components/input/input";
+import Form from "./components/form/form";
 import { Questions, Answers, NotFound404 } from "./pages/index";
 import Modal from "./components/modal/modal";
 import TableDetails from "./components/table-details/table-details";
+import "./models/init";
 
 function App() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function App() {
           <Route path="/questions" element={<Questions />} />
           <Route path="/questions/:id" element={<TableDetails />} />
           <Route path={"/answer/:id"} element={<Answers />} />
-          <Route path="/" element={<Input />} />
+          <Route path="/" element={<Form />} />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
       </section>

@@ -1,11 +1,7 @@
 import styles from "./table-details.module.css";
-import { useStore } from "effector-react";
-import { $store } from "../../store";
 
-export default function TableDetails() {
-  const store = useStore($store);
-  
-  return store && Object.keys(store).length > 0 ? (
+export default function TableDetails({ items }) {
+  return items && Object.keys(items).length > 0 ? (
     <>
       <table className={styles.table} cellPadding={0} cellSpacing={0}>
         <thead>
@@ -17,7 +13,7 @@ export default function TableDetails() {
           </tr>
         </thead>
         <tbody>
-          {store.map(({ question_id, owner, title, answer_count, tags }) => (
+          {items.map(({ question_id, owner, title, answer_count, tags }) => (
             <tr key={question_id}>
               <td className={styles.author}>{owner.display_name}</td>
               <td>{title}</td>

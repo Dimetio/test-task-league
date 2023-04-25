@@ -1,7 +1,9 @@
 import styles from "./table.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { getTopQuestions, getTopTagQuestions } from "../../utils/api";
+import { getTopQuestions } from "../../utils/api";
 import { apiStore } from "../../store";
+
+import { modelTag } from "../../models/tag";
 
 export default function Table({ title, items }) {
   const location = useLocation();
@@ -15,14 +17,6 @@ export default function Table({ title, items }) {
       .catch((err) => console.log(err));
   }
 
-  const hadnleClickTag = (tag) => {
-    apiStore.resetStore();
-    getTopTagQuestions(tag)
-      .then((data) => {
-        apiStore.getQuestionsForTag(data.items);
-      })
-      .catch((err) => console.log(err));
-  };
   return (
     <>
       <h2>{title}</h2>
@@ -56,7 +50,8 @@ export default function Table({ title, items }) {
               <td>
                 {tags.map((tag, index) => (
                   <Link
-                    onClick={() => hadnleClickTag(tag)}
+                    //onClick={() => hadnleClickTag(tag)}
+                    onClick={() => modelTag.onTagClick(tag)}
                     className={styles.tag}
                     key={index}
                     to={`/tag/${tag}`}

@@ -4,18 +4,10 @@ import { getTopQuestions } from "../../utils/api";
 import { apiStore } from "../../store";
 
 import { modelTag } from "../../models/tag";
+import { modelUser } from "../../models/user";
 
 export default function Table({ title, items }) {
   const location = useLocation();
-
-  function handleClickUserQuestion(id) {
-    apiStore.resetStore();
-    getTopQuestions(id)
-      .then((data) => {
-        apiStore.getUserQuestions(data.items);
-      })
-      .catch((err) => console.log(err));
-  }
 
   return (
     <>
@@ -34,7 +26,7 @@ export default function Table({ title, items }) {
             <tr key={question_id}>
               <td className={styles.author}>
                 <Link
-                  onClick={() => handleClickUserQuestion(owner.user_id)}
+                  onClick={() => modelUser.onUserClick(owner.user_id)}
                   to={`${owner.user_id}`}
                   state={{ background: location }}
                 >

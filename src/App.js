@@ -7,9 +7,12 @@ import TableDetails from "./components/table-details/table-details";
 import "./models/init";
 import { useStore } from "effector-react";
 import { modelTag } from "./models/tag";
+import { modelUser } from "./models/user";
 
 function App() {
   const tagStore = useStore(modelTag.$questionsByTag);
+  const userStore = useStore(modelUser.$questionsByUser);
+
   const navigate = useNavigate();
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -39,7 +42,7 @@ function App() {
                 closeModal={onDismiss}
                 isOpened={true}
               >
-                <TableDetails items={tagStore} />
+                <TableDetails items={userStore} />
               </Modal>
             }
           />

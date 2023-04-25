@@ -1,7 +1,7 @@
 import styles from "./modal.module.css";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import ModalOverlay from "../modal-overlay/modal-overlay";
+import ModalOverlay from "./modal-overlay/modal-overlay";
 
 const modalRoot = document.getElementById("modal");
 

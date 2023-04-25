@@ -1,13 +1,18 @@
 import styles from "./table.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { getTopQuestions } from "../../utils/api";
-import { apiStore } from "../../store";
-
 import { modelTag } from "../../models/tag";
 import { modelUser } from "../../models/user";
 
 export default function Table({ title, items }) {
   const location = useLocation();
+
+  const handleUserClick = (id) => {
+    modelUser.onUserClick(id);
+  };
+
+  const handleTagClick = (tag) => {
+    modelTag.onTagClick(tag);
+  };
 
   return (
     <>
@@ -26,7 +31,7 @@ export default function Table({ title, items }) {
             <tr key={question_id}>
               <td className={styles.author}>
                 <Link
-                  onClick={() => modelUser.onUserClick(owner.user_id)}
+                  onClick={() => handleUserClick(owner.user_id)}
                   to={`${owner.user_id}`}
                   state={{ background: location }}
                 >
@@ -42,8 +47,7 @@ export default function Table({ title, items }) {
               <td>
                 {tags.map((tag, index) => (
                   <Link
-                    //onClick={() => hadnleClickTag(tag)}
-                    onClick={() => modelTag.onTagClick(tag)}
+                    onClick={() => handleTagClick(tag)}
                     className={styles.tag}
                     key={index}
                     to={`/tag/${tag}`}

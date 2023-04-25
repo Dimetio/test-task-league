@@ -20,5 +20,5 @@ sample({
 forward({ from: fetchSearchFx, to: inputReset });
 
 $search.updates.watch((value) => {
-  console.log(value);
+  console.log("поиск по форме", value);
 });

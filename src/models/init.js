@@ -1,1 +1,2 @@
-import './search/init'
+import "./search/init";
+import "./tag/init";
